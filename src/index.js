@@ -40,15 +40,16 @@ function showToast(message) {
 message = document.querySelector('.toast');
 message.classList.add('show'); //as in previous lab, no "." needed with the classList
 
-/* setTimeout(() => {    //comment 43-45 to see that toast message is displayed 2 times. why?
+const myTimeout = setTimeout(() => {    //comment 43-45 to see that toast message is displayed 2 times. why?
   message.classList.remove('show');
-},3000) */
-
-
-
+},3000);
 
   // BONUS: ITERATION 4: TOAST CLOSE BUTTON
+const closeIcon = document.querySelector('#close-toast');
+closeIcon.addEventListener("click", () => {
+clearTimeout(myTimeout);
+message.classList.remove('show');
+});
 
-  // Your code goes here ...
 
 }
