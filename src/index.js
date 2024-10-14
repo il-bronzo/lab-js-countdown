@@ -26,7 +26,7 @@ const myInterval = setInterval(() => {
   remainingTime--;
   if (remainingTime<0) {
     clearInterval(myInterval);
-showToast();
+    showToast();
   };
 }, 1000);
 }
@@ -37,8 +37,12 @@ showToast();
 // ITERATION 3: Show Toast
 function showToast(message) {
   console.log("showToast called!");
+message = document.querySelector('.toast');
+message.classList.add('show'); //as in previous lab, no "." needed with the classList
 
-  // Your code goes here ...
+/* setTimeout(() => {    //comment 43-45 to see that toast message is displayed 2 times. why?
+  message.classList.remove('show');
+},3000) */
 
 
 
