@@ -18,7 +18,7 @@ startButton.addEventListener("click", () => {
 
 
 // ITERATION 2: Start Countdown
-document.querySelector('#time').innerText = remainingTime;
+//document.querySelector('#time').innerText = remainingTime;
 function startCountdown() {
   console.log("startCountdown called!");
 
@@ -28,8 +28,19 @@ const myInterval = setInterval(() => {
   remainingTime--;
   if (remainingTime<0) {
     clearInterval(myInterval);
-    showToast();
+    let message = document.querySelector('.toast');
+    showToast(message);
     startButton.disabled = false; //con esta linea vuelve a estar clicable el boton start, para volver a empezar el countdown
+  };
+
+  //BONUS 5: MORE TOASTS
+  if (remainingTime===4) {
+    let message = document.querySelector('#toast5sec');
+    showToast(message);
+  };
+  if (remainingTime===9) {
+    let message = document.querySelector('#toast10sec');
+    showToast(message);
   };
 }, 1000);
 }
@@ -38,9 +49,9 @@ const myInterval = setInterval(() => {
 
 
 // ITERATION 3: Show Toast
+//let message = document.querySelector('.toast');
 function showToast(message) {
   console.log("showToast called!");
-message = document.querySelector('.toast');
 message.classList.add('show'); //as in previous lab, no "." needed with the classList
 
 const myTimeout = setTimeout(() => {    //comment 43-45 to see that toast message is displayed 2 times. why?
