@@ -8,6 +8,8 @@ let timer = null; // Variable to store the interval
 
 const startButton = document.querySelector('#start-btn');
 startButton.addEventListener("click", () => {
+  document.querySelector('#time').innerText = DURATION; //con la linea 11 y 12, cuando el countdown llega a 0, si vuelvo a darle el boton, empieza otra vez desde 10
+  remainingTime = DURATION;
   console.log("Start button clicked");
   startCountdown();
 });
@@ -27,6 +29,7 @@ const myInterval = setInterval(() => {
   if (remainingTime<0) {
     clearInterval(myInterval);
     showToast();
+    startButton.disabled = false; //con esta linea vuelve a estar clicable el boton start, para volver a empezar el countdown
   };
 }, 1000);
 }
@@ -43,6 +46,8 @@ message.classList.add('show'); //as in previous lab, no "." needed with the clas
 const myTimeout = setTimeout(() => {    //comment 43-45 to see that toast message is displayed 2 times. why?
   message.classList.remove('show');
 },3000);
+
+
 
   // BONUS: ITERATION 4: TOAST CLOSE BUTTON
 const closeIcon = document.querySelector('#close-toast');
